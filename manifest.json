@@ -13,9 +13,7 @@
     {
       "matches": [
         "https://tonscan.io/accounts/*",
-        "https://tonscan.io/accounts",
-        "https://everscan.io/accounts/*",
-        "https://everscan.io/accounts"
+        "https://tonscan.io/accounts"
       ],
       "js": [
         "content_scripts/tonscan.js"
@@ -59,11 +57,11 @@
     },
     {
       "matches": [
-        "https://beta.everscan.io/accounts*"
+        "https://everscan.io/*"
       ],
       "js": [
         "content_scripts/main.js",
-        "content_scripts/beta.everscan.io.js"
+        "content_scripts/everscan.io/accounts.js"
       ]
     }
   ],
