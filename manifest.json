@@ -1,0 +1,82 @@
+{
+  "name": "EverWhois",
+  "description": "An Extension that adds name for accounts at tonscan.io",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://firebasestorage.googleapis.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://tonscan.io/accounts/*",
+        "https://tonscan.io/accounts",
+        "https://everscan.io/accounts/*",
+        "https://everscan.io/accounts"
+      ],
+      "js": [
+        "content_scripts/tonscan.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://app.octusbridge.io/*"
+      ],
+      "js": [
+        "content_scripts/main.js",
+        "content_scripts/app.octusbridge.io.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://app.flatqube.io/*"
+      ],
+      "js": [
+        "content_scripts/main.js",
+        "content_scripts/app.flatqube.io.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://snipa.finance/*"
+      ],
+      "js": [
+        "content_scripts/main.js",
+        "content_scripts/snipa.finance.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://everpools.io/*"
+      ],
+      "js": [
+        "content_scripts/main.js",
+        "content_scripts/everpools.io.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://beta.everscan.io/accounts*"
+      ],
+      "js": [
+        "content_scripts/main.js",
+        "content_scripts/beta.everscan.io.js"
+      ]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js", "type": "module"
+  },
+  "icons": {
+    "16": "/images/get_started16.png",
+    "32": "/images/get_started32.png",
+    "48": "/images/get_started48.png",
+    "128": "/images/get_started128.png"
+  },
+  "action": {
+    "default_title": "Click to reload accounts"
+  }
+}
