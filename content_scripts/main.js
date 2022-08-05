@@ -43,10 +43,11 @@ function everwhoisData() {
 
 function updateString(value, data) {
     let key = value.match(nameReg)
-    console.log('key for  :>> ', value, key);
     if (key && key.length && data[key[0]]) {
+        console.log('key for  :>> ', value, key, data[key[0]]);
         return value.replace(nameReg, data[key[0]]);
     } else {
+        console.log('key not found for  :>> ', value, key);
         return value;
     }
 }

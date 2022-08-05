@@ -63,6 +63,15 @@
         "content_scripts/main.js",
         "content_scripts/everscan.io/accounts.js"
       ]
+    },
+    {
+      "matches": [
+        "https://everdao.net/governance/proposals/*"
+      ],
+      "js": [
+        "content_scripts/main.js",
+        "content_scripts/everdao.net.js"
+      ]
     }
   ],
   "background": {

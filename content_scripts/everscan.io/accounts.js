@@ -40,6 +40,8 @@ const restart = (res) => {
     if (document.URL.includes('/accounts')){
         everscanIOSwap(".accounts-table", " div.token__main a", res)
         everscanIOSwap(".transactions-page-table", " div.token__main a", res)
+        everscanIOSwap(".token-transactions-full", " div.token__main a", res)
+        everscanIOSwap(".messages-token-page-table", " div.token__main a", res)
     } else if (document.URL.includes('/transactions')){
         everscanIOSwap(".transactions-page-table", " div.token__main a", res)
         everscanIOSwap(".trx-messages-table", " div.token__name a", res)
