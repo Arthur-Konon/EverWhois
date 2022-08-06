@@ -35,14 +35,14 @@ try {
                 console.log('items :>> ', items);
                 for (let index = 0; index < items.length; index++) {
                     const item = items[index];
-                    if (!item.classList.contains('EverWhoisPatched')) {
+                    if (!item.classList.contains('EverWhoisPatchedLink')) {
                         const a_link = document.createElement("a");
-                        a_link.setAttribute('href', `https://snipa.finance/profile/${item.textContent}`);
+                        a_link.setAttribute('href', `${document.URL.replace('https://everscan.io/accounts/', 'https://snipa.finance/profile/')}`);
                         a_link.setAttribute('style', "margin-left:5px;");
                         a_link.setAttribute('target', "_blank");
                         a_link.textContent = "snipa";
-                        item.appendChild(a_link);
-                        item.classList.add("EverWhoisPatched");
+                        item.nextSibling.appendChild(a_link);
+                        item.classList.add("EverWhoisPatchedLink");
                     }
                 }
             }
