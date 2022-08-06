@@ -1,6 +1,6 @@
 {
   "name": "EverWhois",
-  "description": "An Extension that adds name for accounts at tonscan.io",
+  "description": "Everscale utility ",
   "version": "1.0.0",
   "manifest_version": 3,
   "permissions": [
