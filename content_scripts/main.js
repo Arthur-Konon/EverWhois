@@ -10,17 +10,18 @@ const nameReg = new RegExp(pattern, 'g');
 function validateData(dict) {
     console.log('everwhois loaded data :>> ', dict);
     Object.keys(dict).forEach(key => {
+        const value = typeof dict[key] == 'string'?dict[key]:dict[key].value
         if (key.startsWith("0")){
-            dict[key.substr(0, 2 + 3) + "..." + key.substr(key.length - 3)] = dict[key];
-            dict[key.substr(0, 2 + 4) + "..." + key.substr(key.length - 4)] = dict[key];
-            dict[key.substr(0, 2 + 5) + "..." + key.substr(key.length - 5)] = dict[key];
-            dict[key.substr(0, 2 + 10) + "..." + key.substr(key.length - 10)] = dict[key];
+            dict[key.substr(0, 2 + 3) + "..." + key.substr(key.length - 3)] = value;
+            dict[key.substr(0, 2 + 4) + "..." + key.substr(key.length - 4)] = value;
+            dict[key.substr(0, 2 + 5) + "..." + key.substr(key.length - 5)] = value;
+            dict[key.substr(0, 2 + 10) + "..." + key.substr(key.length - 10)] = value;
         }
         if (key.startsWith('-1')){
-            dict[key.substr(0, 3 + 3) + "..." + key.substr(key.length - 3)] = dict[key];
-            dict[key.substr(0, 3 + 4) + "..." + key.substr(key.length - 4)] = dict[key];
-            dict[key.substr(0, 3 + 5) + "..." + key.substr(key.length - 5)] = dict[key];
-            dict[key.substr(0, 3 + 10) + "..." + key.substr(key.length - 10)] = dict[key];
+            dict[key.substr(0, 3 + 3) + "..." + key.substr(key.length - 3)] = value;
+            dict[key.substr(0, 3 + 4) + "..." + key.substr(key.length - 4)] = value;
+            dict[key.substr(0, 3 + 5) + "..." + key.substr(key.length - 5)] = value;
+            dict[key.substr(0, 3 + 10) + "..." + key.substr(key.length - 10)] = value;
         }
     })
     return dict
