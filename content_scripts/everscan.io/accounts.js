@@ -25,7 +25,7 @@ try {
     }
 
 
-    function everscanIOSwapDetail(container, itemsPath) {
+    function everscanIOSwapDetail(container, itemsPath, fromHref=false, nextSibling=false, name=false) {
         console.log('Try find   :>> ', container);
         return waitForElm(container).then((elm) => {
             console.log('Element is ready', elm);
@@ -36,12 +36,41 @@ try {
                 for (let index = 0; index < items.length; index++) {
                     const item = items[index];
                     if (!item.classList.contains('EverWhoisPatchedLink')) {
+                        if (name === 'Account') {
+                            const textElement = item.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.childNodes[0];
+                            const textValue = textElement.innerText.trim();
+                            console.log('Account item......childNodes[0] :>> ', item, textElement);
+                            if (textValue !== name ){
+                                continue
+                            }
+                        }
+                        else if (name === 'Creator') {
+                            const textElement = item.parentElement.parentElement.parentElement.parentElement.parentElement.childNodes[0];   
+                            const textValue = textElement.innerText.trim();
+                            console.log('Creator item......childNodes[0] :>> ', item, textElement);
+                            if (textValue !== name ){
+                                continue
+                            }
+                        }
+                        else {
+                            continue
+                        }
+
                         const a_link = document.createElement("a");
-                        a_link.setAttribute('href', `${document.URL.replace('https://everscan.io/accounts/', 'https://snipa.finance/profile/')}`);
+                        if (fromHref && item.tagName === 'A'){
+                            a_link.setAttribute('href', `${item.href.replace('/accounts/', 'https://snipa.finance/profile/')}`);
+                        } else {
+                            a_link.setAttribute('href', `${document.URL.replace('https://everscan.io/accounts/', 'https://snipa.finance/profile/')}`);
+                        }
                         a_link.setAttribute('style', "margin-left:5px;");
                         a_link.setAttribute('target', "_blank");
+                        a_link.classList.add('EverWhoisPatchedLink');
                         a_link.textContent = "snipa";
-                        item.nextSibling.appendChild(a_link);
+                        if (nextSibling){
+                            item.nextSibling.appendChild(a_link);
+                        } else {
+                            item.parentElement.appendChild(a_link);
+                        }
                         item.classList.add("EverWhoisPatchedLink");
                     }
                 }
@@ -65,36 +94,48 @@ try {
             }
         }
     }
-
     const restart = (res) => {
-        if (document.URL.includes('/accounts')) {
-            everscanIOSwap(".accounts-table", " div.token__main a", res)
-            everscanIOSwap(".transactions-page-table", " div.token__main a", res)
-            everscanIOSwap(".token-transactions-full", " div.token__main a", res)
-            everscanIOSwap(".messages-token-page-table", " div.token__main a", res)
-            everscanIOSwapDetail(".address", " .address__val", res)
+        everscanIOSwap(".Yh21fXZZ0gxScwi", " div.token__main a", res);
+        
+        // root detail
+        everscanIOSwapDetail(".Gm13bR9tUWc3LjD .token__name>div>div", " div", false, true, 'Account')
 
-        } else if (document.URL.includes('/transactions')) {
-            everscanIOSwap(".transactions-page-table", " div.token__main a", res)
-            everscanIOSwap(".trx-messages-table", " div.token__name a", res)
-        } else if (document.URL.includes('/tokens-transactions')) {
-            everscanIOSwap(".token-transactions-full", " div.token__main a", res)
-        } else if (document.URL.includes('/messages')) {
-            everscanIOSwap(".messages-token-page-table", " div.token__main a", res)
-            everscanIOSwap(".token .address__val", " a", res)
-        } else if (document.URL.includes('/validators')) {
-            everscanIOSwap(".validators-table", " div.token__main a", res)
-        } else {
-            everscanIOSwap(".accounts-table", " div.token__main a", res)
-            everscanIOSwap(".transactions-page-table", " div.token__main a", res)
-            everscanIOSwap(".validators-table", " div.token__main a", res)
-            everscanIOSwap(".messages-token-page-table", " div.token__main a", res)
-            everscanIOSwap(".token-transactions-full", " div.token__main a", res)
-            everscanIOSwap(".trx-messages-table", " div.token__main a", res)
-            everscanIOSwap(".token .address__val", " a", res)
-        }
-        everscanIOSwap(".address", " .address__val", res)
+        // detail
+        everscanIOSwapDetail(".Gm13bR9tUWc3LjD .token__name", " a", true, false, 'Creator');
 
+
+        everscanIOSwap(".token__name", " a", res);
+        everscanIOSwap(".token__name>div>div", " div", res);
+
+        // everscanIOSwap(".address", " .address__val", res);
+        // if (document.URL.includes('/accounts')) {
+        //     everscanIOSwap(".Yh21fXZZ0gxScwi", " div.token__main a", res)
+        //     everscanIOSwap(".transactions-page-table", " div.token__main a", res)
+        //     everscanIOSwap(".token-transactions-full", " div.token__main a", res)
+        //     everscanIOSwap(".messages-token-page-table", " div.token__main a", res)
+        //     
+
+        // } else if (document.URL.includes('/transactions')) {
+        //     everscanIOSwap(".transactions-page-table", " div.t  oken__main a", res)
+        //     everscanIOSwap(".trx-messages-table", " div.token__name a", res)
+        // } else if (document.URL.includes('/tokens-transactions')) {
+        //     everscanIOSwap(".token-transactions-full", " div.token__main a", res)
+        // } else if (document.URL.includes('/messages')) {
+        //     everscanIOSwap(".messages-token-page-table", " div.token__main a", res)
+        //     everscanIOSwap(".token .address__val", " a", res)
+        // } else if (document.URL.includes('/validators')) {
+        //     everscanIOSwap(".validators-table", " div.token__main a", res)
+        // } else {
+        //     everscanIOSwap(".accounts-table", " div.token__main a", res)
+        //     everscanIOSwap(".transactions-page-table", " div.token__main a", res)
+        //     everscanIOSwap(".validators-table", " div.token__main a", res)
+        //     everscanIOSwap(".messages-token-page-table", " div.token__main a", res)
+        //     everscanIOSwap(".token-transactions-full", " div.token__main a", res)
+        //     everscanIOSwap(".trx-messages-table", " div.token__main a", res)
+        //     
+        // }
+        
+        
         // https://everscan.io/accounts
         // https://everscan.io/accounts/0:eb9c9e8c60679d98eb84a6b09b77882cb6df09f88933404e375adccaac11709a
         // https://everscan.io/transactions

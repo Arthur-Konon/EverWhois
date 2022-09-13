@@ -22,3 +22,33 @@ chrome.action.onClicked.addListener((tab) => {
 });
 
 reloadData();
+var compareJSON = function (obj1, obj2) {
+  var ret = {};
+  for (var i in obj2) {
+    if (!obj1.hasOwnProperty(i) || obj2[i] !== obj1[i]) {
+      ret[i] = obj2[i];
+    }
+  }
+  return ret;
+};
+
+function cronReloadData() {
+  reloadData().then(data => {
+    chrome.storage.local.get('everwhois', function (result) {
+      const compares = compareJSON(result.everwhois, data);
+      if (Object.keys(compares).length !== 0) {
+        chrome.notifications.create(
+          {
+            type: 'basic',
+            iconUrl: '/images/icon128.png',
+            title: 'Pls reloade windows',
+            message: 'New accounts in database',
+            priority: 2
+          },
+        )
+      }
+    });
+  })
+}
+
+setInterval(cronReloadData, 1000 * 60)

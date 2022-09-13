@@ -58,7 +58,6 @@ function waitForElm(selector) {
         if (document.querySelector(selector)) {
             return resolve(document.querySelector(selector));
         }
-
         const observer = new MutationObserver(mutations => {
             if (document.querySelector(selector)) {
                 resolve(document.querySelector(selector));
@@ -75,6 +74,12 @@ function waitForElm(selector) {
 
 const testData = {}
 const testAccounts = [
+    // "0:ac92eda56fea3abdc22dd93304081208d0b71165a69908e1783e87fdbe41fffd",
+    // "0:5962afb872626f553275b23a7074774ebd58609c63a16e7addf3fc05c314c8b2",
+    // "0:33da3182fc166eb7f5d86f332b766ecadc2eabb92193eb2195b05193a66b341e",
+    // "0:626e94acbaca034e156aa3bba7f9e0031aaeaf56286686dc9d32cdccd132c23c",
+    // "0:2e6d5fcecfcdd36c748de15d1dd7102728b528a3538582aa5a093e6088d79e28",
+    // "0:6269578347d13127f8235a71aa01d55e4712aeb7582d5143f25eea8aa1f7b70d",
     // "-1:5ce67fe8dd33f7a7151e4f36ad7140538298cc30733065cfea03e14ffe682652",
     // "-1:e415b36ea77fb39bbaecfa260ebb1d91ebae7376a38fd71e0d49f23994fe0203",
     // "0:eb9c9e8c60679d98eb84a6b09b77882cb6df09f88933404e375adccaac11709a",
