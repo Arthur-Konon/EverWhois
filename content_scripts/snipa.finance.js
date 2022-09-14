@@ -11,7 +11,7 @@ function main(data) {
                 const item = items[index];
                 const newValue = updateString(item.textContent, data);
                 if (newValue != item.textContent) {
-                    item.textContent = newValue;
+                    item.querySelector('span').textContent = newValue;
                 }
                 // item.classList.add("EverWhoisPatched");
             }
@@ -27,11 +27,12 @@ function main(data) {
 
 function main_profile(data) {
     console.log("snipa.finance.js start main_profile :>> ");
-    return waitForElm("#root > div.d-flex.flex-column.min-vh-100").then((elm) => {
+    return waitForElm("#root > div.flex.w-screen > div.flex.flex-col.min-h-screen.max-h-screen.overflow-auto.w-full > div:nth-child(2) > div > div.flex.flex-col.md\\:flex-row.justify-between.md\\:items-center.gap-2.md\\:gap-4").then((elm) => {
         console.log('Element is ready', elm);
         function findItems(mutationList, observer) {
             console.log('findItems :>> ', mutationList);
-            let items = document.querySelectorAll("#root > div.d-flex.flex-column.min-vh-100 > div.bg-navbar > div > div.d-flex.justify-content-between.justify-content-start.flex-column.flex-lg-row.align-items-start.align-items-lg-center > div > div > div > div span.d-none.d-lg-block");
+            let items = document.querySelectorAll("#root > div.flex.w-screen > div.flex.flex-col.min-h-screen.max-h-screen.overflow-auto.w-full > div:nth-child(2) > div > div.flex.flex-col.md\\:flex-row.justify-between.md\\:items-center.gap-2.md\\:gap-4 > div.flex.items-center.gap-4 > div > div > span");
+            console.log('s!!!!!!! :>> ', items);
             for (let index = 0; index < items.length; index++) {
                 const item = items[index];
                 const textContent = item.textContent;
@@ -42,7 +43,7 @@ function main_profile(data) {
                 if (!item.classList.contains('EverWhoisPatched')){
                     const a_link = document.createElement("a");
                     a_link.setAttribute('href', `https://everscan.io/accounts/${textContent}`);
-                    a_link.setAttribute('style', "margin-left:5px;");
+                    a_link.setAttribute('style', "margin-left:5px;color: #8b8bff;");
                     a_link.setAttribute('target', "_blank");
                     a_link.textContent= "everscan";
                     console.log('const :>> ', a_link);
