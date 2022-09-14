@@ -58,7 +58,7 @@ try {
 
                         const a_link = document.createElement("a");
                         if (fromHref && item.tagName === 'A'){
-                            a_link.setAttribute('href', `${item.href.replace('/accounts/', 'https://snipa.finance/profile/')}`);
+                            a_link.setAttribute('href', `${item.href.replace('https://everscan.io/accounts/', 'https://snipa.finance/profile/')}`);
                         } else {
                             a_link.setAttribute('href', `${document.URL.replace('https://everscan.io/accounts/', 'https://snipa.finance/profile/')}`);
                         }
