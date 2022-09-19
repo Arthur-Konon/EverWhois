@@ -8,6 +8,11 @@ function reloadData() {
   )
     .then((response) => response.json())
     .then((parsed) => {
+      Object.keys(parsed).forEach(function(key, index) {
+        if (parsed[key].hasOwnProperty('value')){
+          parsed[key] = parsed[key].value
+        }
+      });
       chrome.storage.local.set({ everwhois: parsed }, function () {
         console.log("Value is set to ", parsed);
       });
@@ -33,6 +38,7 @@ var compareJSON = function (obj1, obj2) {
 };
 
 function cronReloadData() {
+  console.log('cronReloadData :>> ');
   reloadData().then(data => {
     chrome.storage.local.get('everwhois', function (result) {
       const compares = compareJSON(result.everwhois, data);
@@ -50,5 +56,5 @@ function cronReloadData() {
     });
   })
 }
-
-setInterval(cronReloadData, 1000 * 60)
+cronReloadData()
+const cronReload = setInterval(cronReloadData, 1000*60);
