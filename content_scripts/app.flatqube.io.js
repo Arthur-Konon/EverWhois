@@ -71,17 +71,20 @@ function swap(container, itemsPath, data){
 
 
 const restart = (res) => {
-    swap("div.transactions-list.list div.panel-loader > div > div > div:nth-child(5)", " a", res)
-    swap("div.farming-transactions__list.list div.panel-loader > div > div > div:nth-child(4)", " a", res)
     // https://app.flatqube.io/farming
+    swap("div.transactions-list.list div.panel-loader > div > div > div:nth-child(5)", " a", res)
     // https://app.flatqube.io/farming/0:39c1ba1305438e59c444267f8887d3ceb7312ab906760b8b891c865217ea8ff0
+    swap("div.farming-transactions__list.list div.panel-loader > div > div > div:nth-child(4)", " a", res)
+    // https://app.flatqube.io/tokens/0:a519f99bb5d6d51ef958ed24d337ad75a1c770885dcd42d51d6663f9fcdacfb2
+    swap("div.list.Co1q8Nh5wCRN_TX.EWXQ8d83ZY3ZViy div.panel-loader > div > div > div:nth-child(4)", " a", res)
+    // https://app.flatqube.io/pools/0:771e3d124c7a824d341484718fcf1af03dd4ba1baf280adeb0663bb030ce2bf9
+    swap("div.list.R0eAiU2rvzJoB9y.HHv8J0PVLmeogN8 div.panel-loader > div > div > div:nth-child(4)", " a", res)
+    // https://app.flatqube.io/gauges/0:eab26e9b6834dfbd2eff9411c7f62c217fd9c8219ee062196b4a854a702acbdb
+    swap("div.list.YGPxY_Q7rC5yboE > div.ZSForM_sJytrEmR > div:nth-child(1) > div:nth-child(4)", " a", res)
 }
-
 everwhoisData().then((res) => {
     restart(res);
     setInterval(() => {
         restart(res);
     }, 5000);
 });
-
-
