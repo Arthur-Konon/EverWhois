@@ -67,7 +67,7 @@ try {
                         a_link.classList.add('EverWhoisPatchedLink');
                         a_link.textContent = "snipa";
                         if (nextSibling){
-                            item.nextSibling.appendChild(a_link);
+                            item.appendChild(a_link);
                         } else {
                             item.parentElement.appendChild(a_link);
                         }
@@ -97,7 +97,7 @@ try {
     const restart = (res) => {
         everscanIOSwap(".Yh21fXZZ0gxScwi", " div.token__main a", res);
         
-        // root detail
+        // root detail (Main details)
         everscanIOSwapDetail(".Gm13bR9tUWc3LjD .token__name>div>div", " div", false, true, 'Account')
 
         // detail
