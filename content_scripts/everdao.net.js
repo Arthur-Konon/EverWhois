@@ -1,7 +1,17 @@
 function copyToClickboard(){
+    let columns =  [
+        "Name",
+        "Voter",
+        "Reason",
+        "Voting",
+        "Voting value",
+        "Date",
+    ].join('\t');
+
     let results = [
-        "Voter\tName\tReason\tVoting\tVoting value\tDate"
+        columns
     ];
+
     document.querySelectorAll("#votes .table__body div.user-card__name a").forEach(el=>{
         let container = el.parentNode.parentNode.parentNode.parentNode
         let reason = container.childNodes[1].textContent;

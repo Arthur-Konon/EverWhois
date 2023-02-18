@@ -80,7 +80,7 @@ const restart = (res) => {
     // https://app.flatqube.io/pools/0:771e3d124c7a824d341484718fcf1af03dd4ba1baf280adeb0663bb030ce2bf9
     swap("div.list.R0eAiU2rvzJoB9y.HHv8J0PVLmeogN8 div.panel-loader > div > div > div:nth-child(4)", " a", res)
     // https://app.flatqube.io/gauges/0:eab26e9b6834dfbd2eff9411c7f62c217fd9c8219ee062196b4a854a702acbdb
-    swap("div.list.YGPxY_Q7rC5yboE > div.ZSForM_sJytrEmR > div:nth-child(1) > div:nth-child(4)", " a", res)
+    swap("div.list.YGPxY_Q7rC5yboE > div.ZSForM_sJytrEmR > div > div:nth-child(4)", " a", res)
 }
 everwhoisData().then((res) => {
     restart(res);

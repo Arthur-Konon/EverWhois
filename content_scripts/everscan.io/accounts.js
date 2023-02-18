@@ -67,7 +67,7 @@ try {
                         a_link.classList.add('EverWhoisPatchedLink');
                         a_link.textContent = "snipa";
                         if (nextSibling){
-                            item.appendChild(a_link);
+                            item.parentElement.parentElement.appendChild(a_link);
                         } else {
                             item.parentElement.appendChild(a_link);
                         }
