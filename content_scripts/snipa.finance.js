@@ -1,11 +1,11 @@
 function main(data) {
     console.log("snipa.finance.js start main :>> ");
-    return waitForElm("#root > div.flex.w-screen > div.flex.flex-col.min-h-screen.max-h-screen.overflow-auto.w-full > div.max-w-7xl.w-full.mx-auto.px-4.my-10 > div:nth-child(2)")
+    return waitForElm("#root > div.flex.w-screen > div.flex.flex-col.min-h-screen.max-h-screen.overflow-auto.w-full")
         .then((elm) => {
         console.log('snipa.finance main element is ready', elm);
         function findItems(mutationList, observer) {
             console.log('findItems :>> ', mutationList);
-            document.querySelector("#root > div.flex.w-screen > div.flex.flex-col.min-h-screen.max-h-screen.overflow-auto.w-full > div.max-w-7xl.w-full.mx-auto.px-4.my-10 > div:nth-child(2) > div.flex.flex-col > div > table > tbody > tr:nth-child(1) > td:nth-child(2) > a > div > span")
+            document.querySelector("#root > div.flex.w-screen > div.flex.flex-col.min-h-screen.max-h-screen.overflow-auto.w-full > div.max-w-7xl.w-full.mx-auto.px-4.my-10 > div > div.flex.flex-col > div > table > tbody > tr:nth-child(1) > td:nth-child(2) > a > div > span")
             let items = document.querySelectorAll(".table_custom .underline");
             for (let index = 0; index < items.length; index++) {
                 const item = items[index];
